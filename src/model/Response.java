@@ -3,12 +3,12 @@ package model;
 public class Response {
 
     private static long id = 1;
-    private String text;
+    private String content;
     private Boolean correct;
     private Question question;
 
-    public Response(String text, Boolean correct, Question question) {
-        this.text = text;
+    public Response(String content, Boolean correct, Question question) {
+        this.content = content;
         this.correct = correct;
         this.question = question;
     }
@@ -17,8 +17,8 @@ public class Response {
         return id++;
     }
 
-    public String getText() {
-        return text;
+    public String getContent() {
+        return content;
     }
 
     public Boolean getCorrect() {
