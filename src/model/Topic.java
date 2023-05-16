@@ -9,7 +9,7 @@ public class Topic {
         this.name = name;
     }
 
-    public long getId() {
+    public static long getId() {
         return id++;
     }
 

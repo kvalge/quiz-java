@@ -10,15 +10,13 @@ public class Question {
     private Topic topic;
     private List<Response> responses;
 
-    public Question(long id, String content, int rank, Topic topic, List<Response> responses) {
-        this.id = id;
+    public Question(String content, int rank, Topic topic) {
         this.content = content;
         this.rank = rank;
         this.topic = topic;
-        this.responses = responses;
     }
 
-    public long getId() {
+    public static long getId() {
         return id++;
     }
 
@@ -32,9 +30,5 @@ public class Question {
 
     public Topic getTopic() {
         return topic;
-    }
-
-    public List<Response> getResponses() {
-        return responses;
     }
 }
