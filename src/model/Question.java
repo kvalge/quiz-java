@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Question {
@@ -8,7 +9,7 @@ public class Question {
     private String content;
     private int rank;
     private long topicId;
-    private List<Response> responses;
+    private List<Response> responses = new ArrayList<>();
 
     public Question(String content, int rank, long topicId) {
         this.content = content;
@@ -30,5 +31,10 @@ public class Question {
 
     public long getTopicId() {
         return topicId;
+    }
+
+    public List<Response> addResponse(Response response) {
+        responses.add(response);
+        return responses;
     }
 }

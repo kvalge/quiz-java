@@ -2,6 +2,7 @@ package dao;
 
 import database.Configuration;
 import model.Question;
+import model.Response;
 import model.Topic;
 
 import java.sql.ResultSet;
@@ -28,17 +29,15 @@ public class DaoQuestion {
             statement.executeUpdate(
                     "INSERT INTO " + TABLE_TOPIC + "(id, name)" +
                             "VALUES (" + idT1 + ", '" + t1.getName() + "')");
-            System.out.println("DaoTopic class get id1: " + idT1);
             statement.executeUpdate(
                     "INSERT INTO " + TABLE_TOPIC + "(id, name)" +
                             "VALUES (" + idT2 + ", '" + t2.getName() + "')");
-            System.out.println("DaoTopic class get id2: " + idT2);
-
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
         }
     }
+
     Question q1 = new Question(
             "Which country was known as Rhodesia before gaining independence from the British in 1979?",
             RANK_1,
@@ -104,7 +103,7 @@ public class DaoQuestion {
         try {
             Statement statement = configuration.connect().createStatement();
 
-            statement.executeUpdate("UPDATE " + TABLE_QUESTION + " SET rank = " + RANK_1 +" WHERE id = 3");
+            statement.executeUpdate("UPDATE " + TABLE_QUESTION + " SET rank = " + RANK_1 + " WHERE id = 3");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
@@ -116,6 +115,32 @@ public class DaoQuestion {
             Statement statement = configuration.connect().createStatement();
 
             statement.execute("DELETE FROM " + TABLE_QUESTION + " WHERE id = 1");
+        } catch (SQLException e) {
+            System.out.println(QUERY_FAILED + e.getMessage());
+            e.getStackTrace();
+        }
+    }
+
+    Response r1q1 = new Response("India", false, Question.getId());
+    Response r2q1 = new Response("Zimbabwe", true, Question.getId());
+    Response r3q1 = new Response("Sierra-Leone", false, Question.getId());
+
+    public void addNewResponse() {
+        try {
+            Statement statement = configuration.connect().createStatement();
+
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_RESPONSE + "(id, content, correct, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (" + Response.getId() + ", '" + r1q1.getContent() + "', " + r1q1.getCorrect()
+                            + ", '" + r1q1.getQuestionId() + "')");
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_RESPONSE + "(id, content, correct, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (" + Response.getId() + ", '" + r2q1.getContent() + "', " + r2q1.getCorrect()
+                            + ", '" + r1q1.getQuestionId() + "')");
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_RESPONSE + "(id, content, correct, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (" + Response.getId() + ", '" + r3q1.getContent() + "', " + r3q1.getCorrect()
+                            + ", '" + r1q1.getQuestionId() + "')");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();

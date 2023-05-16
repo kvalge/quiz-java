@@ -14,5 +14,6 @@ public class Main {
         question.updateQuestion();
 //        question.deleteQuestion();
         question.getQuestionByTopic();
+        question.addNewResponse();
     }
 }

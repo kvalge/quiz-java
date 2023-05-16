@@ -5,15 +5,15 @@ public class Response {
     private static long id = 1;
     private String content;
     private Boolean correct;
-    private Question question;
+    private long questionId;
 
-    public Response(String content, Boolean correct, Question question) {
+    public Response(String content, Boolean correct, long questionId) {
         this.content = content;
         this.correct = correct;
-        this.question = question;
+        this.questionId = questionId;
     }
 
-    public long getId() {
+    public static long getId() {
         return id++;
     }
 
@@ -25,7 +25,7 @@ public class Response {
         return correct;
     }
 
-    public Question getQuestion() {
-        return question;
+    public long getQuestionId() {
+        return questionId;
     }
 }
