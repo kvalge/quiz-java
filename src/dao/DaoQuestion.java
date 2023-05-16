@@ -6,16 +6,11 @@ import model.Question;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import static config.Constants.*;
+
 public class DaoQuestion {
 
-    public static final String TABLE_TOPIC = "topic";
-    public static final String TABLE_QUESTION = "question";
-
-    public static final int RANK_1 = 1;
-    public static final int RANK_2 = 2;
-    public static final int RANK_3 = 3;
-
-    public static final String QUERY_FAILED = "Query failed: ";
     Configuration configuration = new Configuration();
 
     DaoTopic daoTopic = new DaoTopic();

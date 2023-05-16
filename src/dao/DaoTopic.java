@@ -6,10 +6,10 @@ import model.Topic;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import static config.Constants.*;
+
 public class DaoTopic {
 
-    public static final String TABLE_TOPIC = "topic";
-    public static final String QUERY_FAILED = "Query failed: ";
     Configuration configuration = new Configuration();
 
     Topic t1 = new Topic("History");

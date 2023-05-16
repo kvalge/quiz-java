@@ -3,13 +3,9 @@ package database;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CreateTableQuery {
+import static config.Constants.*;
 
-    public static final String TABLE_TOPIC = "topic";
-    public static final String TABLE_QUESTION = "question";
-    public static final String TABLE_RESPONSE = "response";
-    public static final String TABLE_QUIZ = "quiz";
-    public static final String QUERY_FAILED = "Query failed: ";
+public class CreateTableQuery {
 
     Configuration configuration = new Configuration();
 
