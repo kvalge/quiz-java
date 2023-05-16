@@ -7,13 +7,13 @@ public class Question {
     private static long id = 1;
     private String content;
     private int rank;
-    private Topic topic;
+    private long topicId;
     private List<Response> responses;
 
-    public Question(String content, int rank, Topic topic) {
+    public Question(String content, int rank, long topicId) {
         this.content = content;
         this.rank = rank;
-        this.topic = topic;
+        this.topicId = topicId;
     }
 
     public static long getId() {
@@ -28,7 +28,7 @@ public class Question {
         return rank;
     }
 
-    public Topic getTopic() {
-        return topic;
+    public long getTopicId() {
+        return topicId;
     }
 }

@@ -1,6 +1,5 @@
-import dao.DaoTopic;
-import database.CreateTableQuery;
 import dao.DaoQuestion;
+import database.CreateTableQuery;
 
 public class Main {
 
@@ -9,10 +8,8 @@ public class Main {
         CreateTableQuery createTableQuery = new CreateTableQuery();
         createTableQuery.addTables();
 
-        DaoTopic topic = new DaoTopic();
-        topic.addNewTopic();
-
         DaoQuestion question = new DaoQuestion();
+        question.addNewTopic();
         question.addNewQuestion();
         question.updateQuestion();
 //        question.deleteQuestion();
