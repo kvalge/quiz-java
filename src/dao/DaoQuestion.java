@@ -1,5 +1,6 @@
-package database;
+package dao;
 
+import database.Configuration;
 import model.Question;
 
 import java.sql.ResultSet;
