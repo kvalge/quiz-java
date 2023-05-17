@@ -13,10 +13,10 @@ public class CreateTableQuery {
         try {
             Statement statement = configuration.connect().createStatement();
 
-            statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_TOPIC + " (id INTEGER, name TEXT)");
-            statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_QUESTION + " (id INTEGER, content TEXT, rank INTEGER, " + TABLE_TOPIC + "_id INTEGER, UNIQUE(content))");
-            statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_RESPONSE + " (id INTEGER, content TEXT, correct BOOLEAN, " + TABLE_QUESTION + "_id INTEGER)");
-            statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_QUIZ + " (id INTEGER, " + TABLE_QUESTION + "_id INTEGER)");
+            statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_TOPIC + " (id INTEGER PRIMARY KEY, name TEXT, UNIQUE(name))");
+            statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_QUESTION + " (id INTEGER PRIMARY KEY, content TEXT, rank INTEGER, " + TABLE_TOPIC + "_id INTEGER, UNIQUE(content))");
+            statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_RESPONSE + " (id INTEGER PRIMARY KEY, content TEXT, correct BOOLEAN, " + TABLE_QUESTION + "_id INTEGER, UNIQUE(content))");
+            statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_QUIZ + " (id INTEGER PRIMARY KEY, " + TABLE_QUESTION + "_id INTEGER, UNIQUE(id))");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
