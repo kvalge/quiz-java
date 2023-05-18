@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 import static config.Constants.*;
 
-public class DaoQuestion {
+public class DaoQuiz {
 
     Configuration configuration = new Configuration();
 

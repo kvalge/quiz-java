@@ -1,4 +1,4 @@
-import dao.DaoQuestion;
+import dao.DaoQuiz;
 import database.CreateTableQuery;
 
 public class Main {
@@ -8,14 +8,14 @@ public class Main {
         CreateTableQuery createTableQuery = new CreateTableQuery();
         createTableQuery.addTables();
 
-        DaoQuestion question = new DaoQuestion();
-        question.addNewTopic();
-        question.addNewQuestion();
-        question.updateQuestion();
-//        question.deleteQuestion();
-        question.getQuestionByTopic();
-        question.addNewResponse();
-        question.addNewQuiz();
-        question.addQuestionToQuiz();
+        DaoQuiz quiz = new DaoQuiz();
+        quiz.addNewTopic();
+        quiz.addNewQuestion();
+        quiz.updateQuestion();
+//        quiz.deleteQuestion();
+        quiz.getQuestionByTopic();
+        quiz.addNewResponse();
+        quiz.addNewQuiz();
+        quiz.addQuestionToQuiz();
     }
 }

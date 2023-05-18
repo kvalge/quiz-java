@@ -13,7 +13,7 @@ Imported PostgreSQL JDBC Driver library.
 ## Structure and functionalities
 
 Model directory contains model classes.  
-Dao directory contains dao question class with add, get, updated and delete methods.  
+Dao directory contains dao quiz class with add, get, updated and delete methods for topic, question, response and quiz.  
 database directory:  
 Configuration class to create connection to database via java Connection interface.  
 CreateTableQuery class to add tables to database.  
