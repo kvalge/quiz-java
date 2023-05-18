@@ -190,6 +190,7 @@ public class DaoQuiz {
         }
     }
 
+    // Creates a quiz_question table with quiz id and question id.
     public void addQuestionToQuiz() {
         try {
             Statement statement = configuration.connect().createStatement();
@@ -212,6 +213,7 @@ public class DaoQuiz {
         }
     }
 
+    // Creates a view to display first quiz questions.
     public void createFirstQuizView() {
         try {
             Statement statement = configuration.connect().createStatement();
@@ -228,6 +230,7 @@ public class DaoQuiz {
         }
     }
 
+    // Creates a view to display second quiz questions.
     public void createSecondQuizView() {
         try {
             Statement statement = configuration.connect().createStatement();
