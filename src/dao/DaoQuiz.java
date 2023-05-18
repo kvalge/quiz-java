@@ -245,13 +245,13 @@ public class DaoQuiz {
         }
     }
 
-    // Creates a view to display first history quiz questions with right answer.
+    // Creates a database view to display History quiz questions with the right answer.
     public void createFirstQuizView() {
         try {
             Statement statement = configuration.connect().createStatement();
 
             statement.executeUpdate(
-                    "CREATE VIEW first_quiz_view AS" +
+                    "CREATE VIEW history_quiz_view AS" +
                             "  SELECT question.content AS question, response.content AS response" +
                             "  FROM question" +
                             "  FULL OUTER JOIN quiz_question ON question.id = quiz_question.question_id" +
@@ -263,13 +263,13 @@ public class DaoQuiz {
         }
     }
 
-    // Creates a view to display second cinema quiz questions with right answer.
+    // Creates a database view to display Cinema quiz questions with the right answer.
     public void createSecondQuizView() {
         try {
             Statement statement = configuration.connect().createStatement();
 
             statement.executeUpdate(
-                    "CREATE VIEW second_quiz_view AS" +
+                    "CREATE VIEW cinema_quiz_view AS" +
                             "  SELECT question.content AS question, response.content AS response" +
                             "  FROM question" +
                             "  FULL OUTER JOIN quiz_question ON question.id = quiz_question.question_id" +
@@ -281,6 +281,7 @@ public class DaoQuiz {
         }
     }
 
+    // Prints history questions and answers to the console.
     public void consoleQuiz() {
         System.out.println(quiz1.getName().toUpperCase());
 
