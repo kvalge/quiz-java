@@ -170,6 +170,8 @@ public class DaoQuiz {
 
     Quiz quiz1 = new Quiz("First quiz");
     long quiz1Id = Quiz.getId();
+    Quiz quiz2 = new Quiz("Second quiz");
+    long quiz2Id = Quiz.getId();
 
 
     public void addNewQuiz() {
@@ -179,6 +181,9 @@ public class DaoQuiz {
             statement.executeUpdate(
                     "INSERT INTO " + TABLE_QUIZ + "(id, name)" +
                             "VALUES (" + quiz1Id + ", '" + quiz1.getName() + "')");
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_QUIZ + "(id, name)" +
+                            "VALUES (" + quiz2Id + ", '" + quiz2.getName() + "')");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
@@ -198,6 +203,22 @@ public class DaoQuiz {
             statement.executeUpdate(
                     "INSERT INTO " + TABLE_QUIZ_QUESTION + "(id, " + TABLE_QUIZ + "_id, " + TABLE_QUESTION + "_id)" +
                             "VALUES (DEFAULT, " + quiz1Id + ", " + q3Id + ")");
+        } catch (SQLException e) {
+            System.out.println(QUERY_FAILED + e.getMessage());
+            e.getStackTrace();
+        }
+    }
+
+    public void createQuizView() {
+        try {
+            Statement statement = configuration.connect().createStatement();
+
+            statement.executeUpdate(
+                    "CREATE VIEW first_view AS" +
+                            "  SELECT question.content" +
+                            "  FROM question" +
+                            "  FULL OUTER JOIN quiz_question ON question.id = quiz_question.question_id" +
+                            "  WHERE quiz_question.quiz_id = 1;");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();

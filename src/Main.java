@@ -17,5 +17,6 @@ public class Main {
         quiz.addNewResponse();
         quiz.addNewQuiz();
         quiz.addQuestionToQuiz();
+        quiz.createQuizView();
     }
 }
