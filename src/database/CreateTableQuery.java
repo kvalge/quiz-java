@@ -16,7 +16,7 @@ public class CreateTableQuery {
             statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_TOPIC + " (id INTEGER PRIMARY KEY, name TEXT, UNIQUE(name))");
             statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_QUESTION + " (id INTEGER PRIMARY KEY, content TEXT, rank INTEGER, " + TABLE_TOPIC + "_id INTEGER, UNIQUE(content))");
             statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_RESPONSE + " (id INTEGER PRIMARY KEY, content TEXT, correct BOOLEAN, " + TABLE_QUESTION + "_id INTEGER, UNIQUE(content))");
-            statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_QUIZ + " (id INTEGER PRIMARY KEY, " + TABLE_QUESTION + "_id INTEGER, UNIQUE(id))");
+            statement.execute("CREATE TABLE IF NOT EXISTS " + TABLE_QUIZ + " (id INTEGER PRIMARY KEY, name TEXT, UNIQUE(name))");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();

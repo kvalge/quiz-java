@@ -2,6 +2,7 @@ package dao;
 
 import database.Configuration;
 import model.Question;
+import model.Quiz;
 import model.Response;
 import model.Topic;
 
@@ -16,10 +17,10 @@ public class DaoQuestion {
     Configuration configuration = new Configuration();
 
     Topic t1 = new Topic("History");
-    long idT1 = Topic.getId();
+    long t1Id = Topic.getId();
 
     Topic t2 = new Topic("Cinema");
-    long idT2 = Topic.getId();
+    long t2Id = Topic.getId();
 
     public void addNewTopic() {
 
@@ -28,10 +29,10 @@ public class DaoQuestion {
 
             statement.executeUpdate(
                     "INSERT INTO " + TABLE_TOPIC + "(id, name)" +
-                            "VALUES (" + idT1 + ", '" + t1.getName() + "')");
+                            "VALUES (" + t1Id + ", '" + t1.getName() + "')");
             statement.executeUpdate(
                     "INSERT INTO " + TABLE_TOPIC + "(id, name)" +
-                            "VALUES (" + idT2 + ", '" + t2.getName() + "')");
+                            "VALUES (" + t2Id + ", '" + t2.getName() + "')");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
@@ -41,25 +42,25 @@ public class DaoQuestion {
     Question q1 = new Question(
             "Which country was known as Rhodesia before gaining independence from the British in 1979?",
             RANK_1,
-            idT1);
+            t1Id);
     long q1Id = Question.getId();
 
     Question q2 = new Question(
             "Which country was unified by Giuseppe Garibaldi in 1851?",
             RANK_2,
-            idT1);
+            t1Id);
     long q2Id = Question.getId();
 
     Question q3 = new Question(
             "Which President was brought down by the Watergate Scandal?",
             RANK_3,
-            idT1);
+            t1Id);
     long q3Id = Question.getId();
 
     Question q4 = new Question(
             "Who directed Lost in Translation?",
             RANK_3,
-            idT2);
+            t2Id);
     long q4Id = Question.getId();
 
     public void addNewQuestion() {
@@ -166,19 +167,21 @@ public class DaoQuestion {
         }
     }
 
-/*    Quiz quiz1 = new Quiz(Question.getId());
+    Quiz quiz1 = new Quiz("First quiz");
+    long quiz1Id = Quiz.getId();
+
 
     public void addNewQuiz() {
         try {
             Statement statement = configuration.connect().createStatement();
 
             statement.executeUpdate(
-                    "INSERT INTO " + TABLE_QUIZ + "(id" + TABLE_QUESTION + "_id)" +
-                            "VALUES (" + Quiz.getId() + ", '" + r1q1.getQuestionId() + "')");
+                    "INSERT INTO " + TABLE_QUIZ + "(id, name)" +
+                            "VALUES (" + quiz1Id + ", '" + quiz1.getName() + "')");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
         }
-    }*/
+    }
 
 }
