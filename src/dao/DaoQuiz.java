@@ -203,13 +203,16 @@ public class DaoQuiz {
             statement.executeUpdate(
                     "INSERT INTO " + TABLE_QUIZ_QUESTION + "(id, " + TABLE_QUIZ + "_id, " + TABLE_QUESTION + "_id)" +
                             "VALUES (DEFAULT, " + quiz1Id + ", " + q3Id + ")");
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_QUIZ_QUESTION + "(id, " + TABLE_QUIZ + "_id, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (DEFAULT, " + quiz2Id + ", " + q4Id + ")");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
         }
     }
 
-    public void createQuizView() {
+    public void createFirstQuizView() {
         try {
             Statement statement = configuration.connect().createStatement();
 
@@ -219,6 +222,22 @@ public class DaoQuiz {
                             "  FROM question" +
                             "  FULL OUTER JOIN quiz_question ON question.id = quiz_question.question_id" +
                             "  WHERE quiz_question.quiz_id = 1;");
+        } catch (SQLException e) {
+            System.out.println(QUERY_FAILED + e.getMessage());
+            e.getStackTrace();
+        }
+    }
+
+    public void createSecondQuizView() {
+        try {
+            Statement statement = configuration.connect().createStatement();
+
+            statement.executeUpdate(
+                    "CREATE VIEW second_view AS" +
+                            "  SELECT question.content" +
+                            "  FROM question" +
+                            "  FULL OUTER JOIN quiz_question ON question.id = quiz_question.question_id" +
+                            "  WHERE quiz_question.quiz_id = 2;");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
