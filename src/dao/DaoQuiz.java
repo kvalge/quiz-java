@@ -133,6 +133,13 @@ public class DaoQuiz {
     Response r1q2 = new Response("Spain", false, q2Id);
     Response r2q2 = new Response("Switzerland", false, q2Id);
     Response r3q2 = new Response("Italy", true, q2Id);
+    Response r1q3 = new Response("Richard M. Nixon", true, q3Id);
+    Response r2q3 = new Response("George W. Bush", false, q3Id);
+    Response r3q3 = new Response("John F. Kennedy", false, q3Id);
+    Response r1q4 = new Response("Jodie Foster", false, q4Id);
+    Response r2q4 = new Response("Julie Delpy", false, q4Id);
+    Response r3q4 = new Response("Sofia Coppola", true, q4Id);
+
 
     public void addNewResponse() {
         try {
@@ -162,6 +169,30 @@ public class DaoQuiz {
                     "INSERT INTO " + TABLE_RESPONSE + "(id, content, correct, " + TABLE_QUESTION + "_id)" +
                             "VALUES (" + Response.getId() + ", '" + r3q2.getContent() + "', " + r3q2.getCorrect()
                             + ", '" + r3q2.getQuestionId() + "')");
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_RESPONSE + "(id, content, correct, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (" + Response.getId() + ", '" + r1q3.getContent() + "', " + r1q3.getCorrect()
+                            + ", '" + r1q3.getQuestionId() + "')");
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_RESPONSE + "(id, content, correct, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (" + Response.getId() + ", '" + r2q3.getContent() + "', " + r2q3.getCorrect()
+                            + ", '" + r2q3.getQuestionId() + "')");
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_RESPONSE + "(id, content, correct, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (" + Response.getId() + ", '" + r3q3.getContent() + "', " + r3q3.getCorrect()
+                            + ", '" + r3q3.getQuestionId() + "')");
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_RESPONSE + "(id, content, correct, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (" + Response.getId() + ", '" + r1q4.getContent() + "', " + r1q4.getCorrect()
+                            + ", '" + r1q4.getQuestionId() + "')");
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_RESPONSE + "(id, content, correct, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (" + Response.getId() + ", '" + r2q4.getContent() + "', " + r2q4.getCorrect()
+                            + ", '" + r2q4.getQuestionId() + "')");
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_RESPONSE + "(id, content, correct, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (" + Response.getId() + ", '" + r3q4.getContent() + "', " + r3q4.getCorrect()
+                            + ", '" + r3q4.getQuestionId() + "')");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
@@ -213,34 +244,36 @@ public class DaoQuiz {
         }
     }
 
-    // Creates a view to display first quiz questions.
+    // Creates a view to display first quiz questions with right answer.
     public void createFirstQuizView() {
         try {
             Statement statement = configuration.connect().createStatement();
 
             statement.executeUpdate(
                     "CREATE VIEW first_quiz_view AS" +
-                            "  SELECT question.content" +
+                            "  SELECT question.content AS question, response.content AS response" +
                             "  FROM question" +
                             "  FULL OUTER JOIN quiz_question ON question.id = quiz_question.question_id" +
-                            "  WHERE quiz_question.quiz_id = 1;");
+                            "  FULL OUTER JOIN response ON question.id = response.question_id" +
+                            "  WHERE quiz_question.quiz_id = 1 AND response.correct = TRUE;");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
         }
     }
 
-    // Creates a view to display second quiz questions.
+    // Creates a view to display second quiz questions with right answer.
     public void createSecondQuizView() {
         try {
             Statement statement = configuration.connect().createStatement();
 
             statement.executeUpdate(
                     "CREATE VIEW second_quiz_view AS" +
-                            "  SELECT question.content" +
+                            "  SELECT question.content AS question, response.content AS response" +
                             "  FROM question" +
                             "  FULL OUTER JOIN quiz_question ON question.id = quiz_question.question_id" +
-                            "  WHERE quiz_question.quiz_id = 2;");
+                            "  FULL OUTER JOIN response ON question.id = response.question_id" +
+                            "  WHERE quiz_question.quiz_id = 2 AND response.correct = TRUE;");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
