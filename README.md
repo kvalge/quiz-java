@@ -14,7 +14,7 @@ Database directory:
 Configuration class to create connection to database via Java Connection interface.  
 CreateTableQuery class to add tables to database.  
 
-Dao directory:
+Dao directory:  
 Dao Quiz class for a database interaction with add, get, updated and delete methods for Topic,
 Question, Response and Quiz.  
 Created methods to generate database views to display questions by topic with the right answer.   
