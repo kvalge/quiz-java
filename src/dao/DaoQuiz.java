@@ -137,7 +137,7 @@ public class DaoQuiz {
     Response r2q3 = new Response("George W. Bush", false, q3Id);
     Response r3q3 = new Response("John F. Kennedy", false, q3Id);
     Response r1q4 = new Response("Jodie Foster", false, q4Id);
-    Response r2q4 = new Response("Julie Delpy", false, q4Id);
+    Response r2q4 = new Response("Sally Potter", false, q4Id);
     Response r3q4 = new Response("Sofia Coppola", true, q4Id);
 
 
