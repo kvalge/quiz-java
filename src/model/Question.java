@@ -33,8 +33,11 @@ public class Question {
         return topicId;
     }
 
-    public List<Response> addResponse(Response response) {
+    public void addResponse(Response response) {
         responses.add(response);
+    }
+
+    public List<Response> getResponses() {
         return responses;
     }
 }

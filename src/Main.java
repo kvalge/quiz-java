@@ -19,5 +19,6 @@ public class Main {
         quiz.addQuestionToQuiz();
         quiz.createFirstQuizView();
         quiz.createSecondQuizView();
+        quiz.consoleQuiz();
     }
 }

@@ -9,6 +9,7 @@ import model.Topic;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import static config.Constants.*;
 
@@ -199,9 +200,9 @@ public class DaoQuiz {
         }
     }
 
-    Quiz quiz1 = new Quiz("First quiz");
+    Quiz quiz1 = new Quiz("History quiz");
     long quiz1Id = Quiz.getId();
-    Quiz quiz2 = new Quiz("Second quiz");
+    Quiz quiz2 = new Quiz("Cinema quiz");
     long quiz2Id = Quiz.getId();
 
 
@@ -277,6 +278,61 @@ public class DaoQuiz {
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
+        }
+    }
+
+    public void consoleQuiz() {
+        System.out.println(quiz1.getName().toUpperCase());
+
+        quiz1.addQuestions(q1);
+        quiz1.addQuestions(q2);
+        quiz1.addQuestions(q3);
+
+        q1.addResponse(r1q1);
+        q1.addResponse(r2q1);
+        q1.addResponse(r3q1);
+        q2.addResponse(r1q2);
+        q2.addResponse(r2q2);
+        q2.addResponse(r3q2);
+        q3.addResponse(r1q3);
+        q3.addResponse(r2q3);
+        q3.addResponse(r3q3);
+
+        List<Question> questions = quiz1.getQuestions();
+        System.out.println(questions.get(0).getContent());
+        List<Response> q1Responses = q1.getResponses();
+        for (Response r : q1Responses) {
+            System.out.println(r.getContent());
+        }
+
+        for (Response r : q1Responses) {
+            if (r.getCorrect()) {
+                System.out.println("The right answer is: " + r.getContent());
+            }
+        }
+
+        System.out.println(questions.get(1).getContent());
+        List<Response> q2Responses = q2.getResponses();
+        for (Response r : q2Responses) {
+            System.out.println(r.getContent());
+        }
+
+        for (Response r : q2Responses) {
+            if (r.getCorrect()) {
+                System.out.println("The right answer is: " + r.getContent());
+            }
+        }
+
+        System.out.println(questions.get(2).getContent());
+        List<Response> q3Responses = q3.getResponses();
+        for (Response r : q3Responses) {
+            System.out.println(r.getContent());
+        }
+
+        for (Response r : q3Responses) {
+            if (r.getCorrect()) {
+                System.out.println("The right answer is: " + r.getContent());
+            }
         }
     }
 }
