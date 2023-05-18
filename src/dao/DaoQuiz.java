@@ -108,7 +108,7 @@ public class DaoQuiz {
         try {
             Statement statement = configuration.connect().createStatement();
 
-            statement.executeUpdate("UPDATE " + TABLE_QUESTION + " SET rank = " + RANK_1 + " WHERE id = 4");
+            statement.executeUpdate("UPDATE " + TABLE_QUESTION + " SET rank = " + RANK_1 + " WHERE id = " + q2Id + "");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
@@ -119,7 +119,7 @@ public class DaoQuiz {
         try {
             Statement statement = configuration.connect().createStatement();
 
-            statement.execute("DELETE FROM " + TABLE_QUESTION + " WHERE id = 4");
+            statement.execute("DELETE FROM " + TABLE_QUESTION + " WHERE id = " + q3Id + "");
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();

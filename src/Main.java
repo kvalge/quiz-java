@@ -12,7 +12,7 @@ public class Main {
         quiz.addNewTopic();
         quiz.addNewQuestion();
         quiz.updateQuestion();
-//        quiz.deleteQuestion();
+        quiz.deleteQuestion();
         quiz.getQuestionByTopic();
         quiz.addNewResponse();
         quiz.addNewQuiz();
