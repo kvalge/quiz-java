@@ -11,7 +11,7 @@ Imported PostgreSQL JDBC Driver library.
 
 ## Structure and functionalities  
 Database directory:  
-Configuration class to create connection to database via java Connection interface.  
+Configuration class to create connection to database via Java Connection interface.  
 CreateTableQuery class to add tables to database.  
   
 Model directory contains model classes.  
