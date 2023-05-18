@@ -222,7 +222,7 @@ public class DaoQuiz {
         }
     }
 
-    // Creates a quiz_question table with quiz id and question id.
+    // Adds quiz id and question id to the quiz_question table.
     public void addQuestionToQuiz() {
         try {
             Statement statement = configuration.connect().createStatement();
