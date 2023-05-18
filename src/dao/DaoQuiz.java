@@ -217,7 +217,7 @@ public class DaoQuiz {
             Statement statement = configuration.connect().createStatement();
 
             statement.executeUpdate(
-                    "CREATE VIEW first_view AS" +
+                    "CREATE VIEW first_quiz_view AS" +
                             "  SELECT question.content" +
                             "  FROM question" +
                             "  FULL OUTER JOIN quiz_question ON question.id = quiz_question.question_id" +
@@ -233,7 +233,7 @@ public class DaoQuiz {
             Statement statement = configuration.connect().createStatement();
 
             statement.executeUpdate(
-                    "CREATE VIEW second_view AS" +
+                    "CREATE VIEW second_quiz_view AS" +
                             "  SELECT question.content" +
                             "  FROM question" +
                             "  FULL OUTER JOIN quiz_question ON question.id = quiz_question.question_id" +
