@@ -183,4 +183,23 @@ public class DaoQuestion {
             e.getStackTrace();
         }
     }
+
+    public void addQuestionToQuiz() {
+        try {
+            Statement statement = configuration.connect().createStatement();
+
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_QUIZ_QUESTION + "(id, " + TABLE_QUIZ + "_id, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (DEFAULT, " + quiz1Id + ", " + q1Id + ")");
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_QUIZ_QUESTION + "(id, " + TABLE_QUIZ + "_id, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (DEFAULT, " + quiz1Id + ", " + q2Id + ")");
+            statement.executeUpdate(
+                    "INSERT INTO " + TABLE_QUIZ_QUESTION + "(id, " + TABLE_QUIZ + "_id, " + TABLE_QUESTION + "_id)" +
+                            "VALUES (DEFAULT, " + quiz1Id + ", " + q3Id + ")");
+        } catch (SQLException e) {
+            System.out.println(QUERY_FAILED + e.getMessage());
+            e.getStackTrace();
+        }
+    }
 }

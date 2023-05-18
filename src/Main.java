@@ -16,5 +16,6 @@ public class Main {
         question.getQuestionByTopic();
         question.addNewResponse();
         question.addNewQuiz();
+        question.addQuestionToQuiz();
     }
 }
