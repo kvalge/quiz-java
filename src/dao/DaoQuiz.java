@@ -244,7 +244,7 @@ public class DaoQuiz {
         }
     }
 
-    // Creates a view to display first quiz questions with right answer.
+    // Creates a view to display first history quiz questions with right answer.
     public void createFirstQuizView() {
         try {
             Statement statement = configuration.connect().createStatement();
@@ -262,7 +262,7 @@ public class DaoQuiz {
         }
     }
 
-    // Creates a view to display second quiz questions with right answer.
+    // Creates a view to display second cinema quiz questions with right answer.
     public void createSecondQuizView() {
         try {
             Statement statement = configuration.connect().createStatement();
