@@ -93,8 +93,9 @@ public class DaoQuiz {
         try {
             Statement statement = configuration.connect().createStatement();
 
-            statement.execute("SELECT * FROM " + TABLE_QUESTION + " WHERE topic_id = 1");
+            statement.execute("SELECT * FROM " + TABLE_QUESTION + " WHERE topic_id = " + t1Id);
             ResultSet results = statement.getResultSet();
+            System.out.println(t1.getName() + " questions: ");
             while (results.next()) {
                 System.out.println(results.getString("content"));
             }
@@ -108,7 +109,7 @@ public class DaoQuiz {
         try {
             Statement statement = configuration.connect().createStatement();
 
-            statement.executeUpdate("UPDATE " + TABLE_QUESTION + " SET rank = " + RANK_1 + " WHERE id = " + q2Id + "");
+            statement.executeUpdate("UPDATE " + TABLE_QUESTION + " SET rank = " + RANK_1 + " WHERE id = " + q2Id);
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
@@ -119,7 +120,7 @@ public class DaoQuiz {
         try {
             Statement statement = configuration.connect().createStatement();
 
-            statement.execute("DELETE FROM " + TABLE_QUESTION + " WHERE id = " + q3Id + "");
+            statement.execute("DELETE FROM " + TABLE_QUESTION + " WHERE id = " + q3Id);
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
