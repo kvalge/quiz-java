@@ -196,22 +196,20 @@ public class DaoQuiz {
         try {
             Statement statement = configuration.connect().createStatement();
 
-            statement.executeUpdate(
-                    "INSERT INTO " + TABLE_QUIZ_QUESTION + "(id, " + TABLE_QUIZ + "_id, " + TABLE_QUESTION + "_id)" +
-                            "VALUES (DEFAULT, " + quiz1Id + ", " + q1Id + ")");
-            statement.executeUpdate(
-                    "INSERT INTO " + TABLE_QUIZ_QUESTION + "(id, " + TABLE_QUIZ + "_id, " + TABLE_QUESTION + "_id)" +
-                            "VALUES (DEFAULT, " + quiz1Id + ", " + q2Id + ")");
-            statement.executeUpdate(
-                    "INSERT INTO " + TABLE_QUIZ_QUESTION + "(id, " + TABLE_QUIZ + "_id, " + TABLE_QUESTION + "_id)" +
-                            "VALUES (DEFAULT, " + quiz1Id + ", " + q3Id + ")");
-            statement.executeUpdate(
-                    "INSERT INTO " + TABLE_QUIZ_QUESTION + "(id, " + TABLE_QUIZ + "_id, " + TABLE_QUESTION + "_id)" +
-                            "VALUES (DEFAULT, " + quiz2Id + ", " + q4Id + ")");
+            insertQuestionToQuiz(statement, quiz1Id, q1Id);
+            insertQuestionToQuiz(statement, quiz1Id, q2Id);
+            insertQuestionToQuiz(statement, quiz1Id, q3Id);
+            insertQuestionToQuiz(statement, quiz2Id, q4Id);
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
         }
+    }
+
+    private void insertQuestionToQuiz(Statement statement, long quizId, long questionId) throws SQLException {
+        statement.executeUpdate(
+                "INSERT INTO " + TABLE_QUIZ_QUESTION + "(id, " + TABLE_QUIZ + "_id, " + TABLE_QUESTION + "_id)" +
+                        "VALUES (DEFAULT, " + quizId + ", " + questionId + ")");
     }
 
     // Creates a database view to display History quiz questions with the right answer.
