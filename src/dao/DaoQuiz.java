@@ -100,6 +100,7 @@ public class DaoQuiz {
             while (results.next()) {
                 System.out.println(results.getString("content"));
             }
+            System.out.println();
         } catch (SQLException e) {
             System.out.println(QUERY_FAILED + e.getMessage());
             e.getStackTrace();
