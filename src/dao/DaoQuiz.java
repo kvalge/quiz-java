@@ -18,10 +18,10 @@ public class DaoQuiz {
 
     Configuration configuration = new Configuration();
 
-    Topic t1 = new Topic(TOPIC_NAME_1);
+    Topic t1 = new Topic(TOPIC1_NAME);
     long t1Id = Topic.getId();
 
-    Topic t2 = new Topic(TOPIC_NAME_2);
+    Topic t2 = new Topic(TOPIC2_NAME);
     long t2Id = Topic.getId();
 
     public void addNewTopic() {
@@ -126,18 +126,18 @@ public class DaoQuiz {
         }
     }
 
-    Response r1q1 = new Response(R1Q1, false, q1Id);
-    Response r2q1 = new Response(R2Q1, true, q1Id);
-    Response r3q1 = new Response(R3Q1, false, q1Id);
-    Response r1q2 = new Response(R1Q2, false, q2Id);
-    Response r2q2 = new Response(R2Q2, false, q2Id);
-    Response r3q2 = new Response(R3Q2, true, q2Id);
-    Response r1q3 = new Response(R1Q3, true, q3Id);
-    Response r2q3 = new Response(R2Q3, false, q3Id);
-    Response r3q3 = new Response(R3Q3, false, q3Id);
-    Response r1q4 = new Response(R1Q4, false, q4Id);
-    Response r2q4 = new Response(R2Q4, false, q4Id);
-    Response r3q4 = new Response(R3Q4, true, q4Id);
+    Response r1q1 = new Response(R1Q1_CONTENT, false, q1Id);
+    Response r2q1 = new Response(R2Q1_CONTENT, true, q1Id);
+    Response r3q1 = new Response(R3Q1_CONTENT, false, q1Id);
+    Response r1q2 = new Response(R1Q2_CONTENT, false, q2Id);
+    Response r2q2 = new Response(R2Q2_CONTENT, false, q2Id);
+    Response r3q2 = new Response(R3Q2_CONTENT, true, q2Id);
+    Response r1q3 = new Response(R1Q3_CONTENT, true, q3Id);
+    Response r2q3 = new Response(R2Q3_CONTENT, false, q3Id);
+    Response r3q3 = new Response(R3Q3_CONTENT, false, q3Id);
+    Response r1q4 = new Response(R1Q4_CONTENT, false, q4Id);
+    Response r2q4 = new Response(R2Q4_CONTENT, false, q4Id);
+    Response r3q4 = new Response(R3Q4_CONTENT, true, q4Id);
 
 
     public void addNewResponse() {
@@ -249,7 +249,9 @@ public class DaoQuiz {
         }
     }
 
-    // Prints history questions and answers to the console.
+    // Prints History quiz questions and answers to the console.
+    List<Question> questions = quiz1.getQuestions();
+
     public void consoleQuiz() {
         System.out.println(quiz1.getName().toUpperCase());
 
@@ -267,38 +269,20 @@ public class DaoQuiz {
         q3.addResponse(r2q3);
         q3.addResponse(r3q3);
 
-        List<Question> questions = quiz1.getQuestions();
-        System.out.println(questions.get(0).getContent());
-        List<Response> q1Responses = q1.getResponses();
+        getQuestionsAndAnswers(q1, 0);
+        getQuestionsAndAnswers(q2, 1);
+        getQuestionsAndAnswers(q3, 2);
+    }
+
+    public void getQuestionsAndAnswers(Question question, int questionIndex) {
+        int i = 1;
+        System.out.println(questions.get(questionIndex).getContent());
+        List<Response> q1Responses = question.getResponses();
         for (Response r : q1Responses) {
-            System.out.println(r.getContent());
+            System.out.println(i + ": " + r.getContent());
+            i++;
         }
-
         for (Response r : q1Responses) {
-            if (r.getCorrect()) {
-                System.out.println("The right answer is: " + r.getContent());
-            }
-        }
-
-        System.out.println(questions.get(1).getContent());
-        List<Response> q2Responses = q2.getResponses();
-        for (Response r : q2Responses) {
-            System.out.println(r.getContent());
-        }
-
-        for (Response r : q2Responses) {
-            if (r.getCorrect()) {
-                System.out.println("The right answer is: " + r.getContent());
-            }
-        }
-
-        System.out.println(questions.get(2).getContent());
-        List<Response> q3Responses = q3.getResponses();
-        for (Response r : q3Responses) {
-            System.out.println(r.getContent());
-        }
-
-        for (Response r : q3Responses) {
             if (r.getCorrect()) {
                 System.out.println("The right answer is: " + r.getContent());
             }
