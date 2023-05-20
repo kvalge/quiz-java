@@ -12,15 +12,16 @@ import java.sql.Statement;
 import java.util.List;
 
 import static config.Constants.*;
+import static config.QuizTextConst.*;
 
 public class DaoQuiz {
 
     Configuration configuration = new Configuration();
 
-    Topic t1 = new Topic("History");
+    Topic t1 = new Topic(TOPIC_NAME_1);
     long t1Id = Topic.getId();
 
-    Topic t2 = new Topic("Cinema");
+    Topic t2 = new Topic(TOPIC_NAME_2);
     long t2Id = Topic.getId();
 
     public void addNewTopic() {
@@ -43,25 +44,25 @@ public class DaoQuiz {
     }
 
     Question q1 = new Question(
-            "Which country was known as Rhodesia before gaining independence from the British in 1979?",
+            Q1_CONTENT,
             RANK_1,
             t1Id);
     long q1Id = Question.getId();
 
     Question q2 = new Question(
-            "Which country was unified by Giuseppe Garibaldi in 1851?",
+            Q2_CONTENT,
             RANK_2,
             t1Id);
     long q2Id = Question.getId();
 
     Question q3 = new Question(
-            "Which President was brought down by the Watergate Scandal?",
+            Q3_CONTENT,
             RANK_3,
             t1Id);
     long q3Id = Question.getId();
 
     Question q4 = new Question(
-            "Who directed Lost in Translation?",
+            Q4_CONTENT,
             RANK_3,
             t2Id);
     long q4Id = Question.getId();
@@ -125,18 +126,18 @@ public class DaoQuiz {
         }
     }
 
-    Response r1q1 = new Response("India", false, q1Id);
-    Response r2q1 = new Response("Zimbabwe", true, q1Id);
-    Response r3q1 = new Response("Sierra-Leone", false, q1Id);
-    Response r1q2 = new Response("Spain", false, q2Id);
-    Response r2q2 = new Response("Switzerland", false, q2Id);
-    Response r3q2 = new Response("Italy", true, q2Id);
-    Response r1q3 = new Response("Richard M. Nixon", true, q3Id);
-    Response r2q3 = new Response("George W. Bush", false, q3Id);
-    Response r3q3 = new Response("John F. Kennedy", false, q3Id);
-    Response r1q4 = new Response("Jodie Foster", false, q4Id);
-    Response r2q4 = new Response("Sally Potter", false, q4Id);
-    Response r3q4 = new Response("Sofia Coppola", true, q4Id);
+    Response r1q1 = new Response(R1Q1, false, q1Id);
+    Response r2q1 = new Response(R2Q1, true, q1Id);
+    Response r3q1 = new Response(R3Q1, false, q1Id);
+    Response r1q2 = new Response(R1Q2, false, q2Id);
+    Response r2q2 = new Response(R2Q2, false, q2Id);
+    Response r3q2 = new Response(R3Q2, true, q2Id);
+    Response r1q3 = new Response(R1Q3, true, q3Id);
+    Response r2q3 = new Response(R2Q3, false, q3Id);
+    Response r3q3 = new Response(R3Q3, false, q3Id);
+    Response r1q4 = new Response(R1Q4, false, q4Id);
+    Response r2q4 = new Response(R2Q4, false, q4Id);
+    Response r3q4 = new Response(R3Q4, true, q4Id);
 
 
     public void addNewResponse() {
